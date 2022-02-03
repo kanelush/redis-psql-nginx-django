@@ -1,0 +1,160 @@
+
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+    
+{% block title %}encalbuco.cl|{{ negocio.title }}{% endblock%}
+{% block content %}
+<br><br>
+<div class="container section detalle">
+  <div class="buttons is-centered">
+    <a href="{% url 'base' %}" class="button is-small is-info ">Inicio</a>
+  </div>
+  <div class="tile is-ancestor">
+     
+      
+      <div class="tile is-parent">
+        <div class="tile is-child box">
+	  <p class="title has-text-centered is-4">{{ negocio.category }}</p>
+          <figure class="image is-4by3">
+            <img src="{{ negocio.image.url }}">
+          </figure>
+          <br>
+          
+          <p class="title has-text-centered is-4">{{ negocio.title }}</p>
+          <p class="sub-title has-text-centered">@{{ negocio.title }}</p>
+          <p class="content has-text-centered">{{ negocio.description }}</p>
+          <hr><hr>
+          <h1 class="title is-4 has-text-centered">Contáctanos</h1>
+  <div class="columns is-centered">
+    <div class="column  is-half">
+      <form method="POST" class="">
+        {% csrf_token %}
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            {% render_field form.name class="input"%}
+          </div>
+        </div>
+        
+        <div class="field">
+          <label class="label">Mail</label>
+          <div class="control">
+            {% render_field form.mail class="input" %}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Asunto</label>
+          <div class="control">
+            {% render_field form.subject class="input" %}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Descripción</label>
+          <div class="control">
+            {% render_field form.description class="textarea" %}
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button onclick="myFunction()" class="button is-info">Enviar</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light">Cancelar</button>
+          </div>
+        </div>
+        
+         
+      </form>
+
+    </div>
+  </div>
+        </div>
+        
+      </div>
+    
+
+      
+    </div>
+  
+</div>
+<!-- <div class="container">
+  <div class="card ">
+      <hr><br>
+  <h1 class="title has-text-centered"> {{ negocio.title }}</h1>
+  <h1 class="title is-4 has-text-centered"> {{ negocio.category }}</h1>
+  <div id="img" class="card-image">
+    <figure class="image is-4by3">
+      <img src="{{ negocio.image.url }}" alt="Placeholder image">
+    </figure>
+  </div>
+  <hr>
+  <div id="text" class="content has-text-centered">
+      {{ negocio.description }}
+  </div>
+  <hr>
+  <h1 class="title is-4 has-text-centered">Contáctanos</h1>
+  <div class="columns is-centered">
+    <div class="column  is-half">
+      <form method="POST" class="">
+        {% csrf_token %}
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            {% render_field form.name class="input"%}
+          </div>
+        </div>
+        
+        <div class="field">
+          <label class="label">Mail</label>
+          <div class="control">
+            {% render_field form.mail class="input" %}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Asunto</label>
+          <div class="control">
+            {% render_field form.subject class="input" %}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Descripción</label>
+          <div class="control">
+            {% render_field form.description class="textarea" %}
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button onclick="myFunction()" class="button is-info">Enviar</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light">Cancelar</button>
+          </div>
+        </div>
+        
+         
+      </form>
+
+    </div>
+  </div>
+  
+  </div>
+  
+</div>
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    Vue.createApp({
+      data() {
+        return {
+          items: [{ message: '{{ negocio.title }}' }, { message: '{{ negocio.description }}' }]
+        }
+      },
+      compilerOptions: {
+        delimiters: ["[[", "]]"]
+      }
+    }).mount('#array-rendering')
+</script> -->
+<br><br>
+{% endblock %}

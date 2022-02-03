@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+    
+{% block title %} encalbuco.cl|{{ negocio.title }}{% endblock%}
+{% block content %}
+
+
+    <section class="section">
+        
+        <div class="buttons is-centered is-desktop">
+            
+            {% for c in categories %}
+            
+            <a href="{{ c.get_absolute_url }}"class="button {% cycle 'is-info' 'is-success' 'is-danger' %}">{{ c.name }}</a>
+            
+           
+            {% endfor %}    
+            
+        </div>
+        <div class="container">
+            <div class="tile is-ancestor">
+              {% for obj in negocio %}
+              <div class="tile is-parent is-3">
+                <div class="tile is-child box">
+                    <a href="{% url 'detail' obj.negocio_slug %}">
+                  <figure class="image is-4by3">
+                    <img src="{{ obj.image.url }}" loading="lazy">
+                  </figure>
+                  
+                  
+                  <p class="title has-text-centered is-4">{{ obj.title }}</p>
+                  <p class="sub-title has-text-centered">@{{ obj.title }}</p>
+                  <p class="content has-text-centered">{{ obj.description}}</p>
+                </a>
+                </div>
+              </div>
+              {% endfor %}
+              
+            </div>
+            <!-- <div class="columns is-multiline">
+                {% for obj in negocio %}
+                <div class="column is-3 is-flex" >
+                    <a href="{% url 'detail' obj.negocio_slug %}">
+                    <div class="card">
+                        <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="{{ obj.image.url }}" alt="Placeholder image">
+                        </figure>
+                        </div>
+                        <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="{{ obj.image.url }}" alt="Placeholder image">
+                            </figure>
+                            </div>
+                            <div class="media-content">
+                            <p class="title is-4">{{ obj.title }}</p>
+                            <p class="subtitle is-6">@{{ obj.title }}</p>
+                            </div>
+                        </div>
+                    
+                        <div class="content">
+                            <p>{{ obj.description }} </p>
+                        </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div> -->
+        </div>
+    </section>
+
+  
+{% endblock %}
