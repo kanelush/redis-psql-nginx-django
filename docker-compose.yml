@@ -8,7 +8,7 @@ services:
     environment:
       - POSTGRES_DB=db_v1
       - POSTGRES_USER=user1
-      - POSTGRES_PASSWORD=user1
+      - POSTGRES_PASSWORD=x
   django_gunicorn:
     volumes:
       - static:/static
